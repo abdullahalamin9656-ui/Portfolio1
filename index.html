@@ -1471,8 +1471,613 @@ hard work and building a better future.
         velocity *= Math.pow(0.94, delta * 60);
       } else {
         velocity = 0;
+
+<!-- ================= MY JOURNEY 3D ================= -->
+<section id="my-journey-3d">
+  <div class="mj-heading">
+    <span class="mj-label">MY JOURNEY</span>
+    <h2>From a Dream <span>to Reality</span></h2>
+    <p>My journey in Web Development — A story of passion and perseverance.</p>
+  </div>
+
+  <div class="mj-stage" id="mjStage">
+
+    <div class="mj-orbit mj-orbit-one"></div>
+    <div class="mj-orbit mj-orbit-two"></div>
+
+    <!-- Profile picture -->
+    <div class="mj-profile">
+      <img
+        id="mjProfilePhoto"
+        src="images/profile.jpg"
+        alt="Alamin profile"
+        onerror="this.style.display='none';document.getElementById('mjPhotoPlaceholder').style.display='flex';"
+      >
+      <div id="mjPhotoPlaceholder" class="mj-photo-placeholder">
+        <span>+</span>
+        <small>YOUR PHOTO</small>
+      </div>
+    </div>
+
+    <!-- 3D Cards -->
+    <div class="mj-carousel" id="mjCarousel">
+
+      <article class="mj-card">
+        <div class="mj-card-icon">✦</div>
+        <span class="mj-number">01 / 04</span>
+        <h3>A Dream</h3>
+        <p>
+          Web Development-এর প্রতি আমার আগ্রহ অনেক আগে থেকেই।
+          নিজের হাতে একটি Website তৈরি করার স্বপ্ন ছিল।
+        </p>
+        <span class="mj-card-footer">THE BEGINNING</span>
+      </article>
+
+      <article class="mj-card">
+        <div class="mj-card-icon">⌛</div>
+        <span class="mj-number">02 / 04</span>
+        <h3>The Struggle</h3>
+        <p>
+          নানা কারণে সেই স্বপ্ন বাস্তবায়ন করা হয়ে ওঠেনি।
+          অনেক দিন চেষ্টা করেও নিজের মতো করে তৈরি করতে পারিনি।
+        </p>
+        <span class="mj-card-footer">NEVER GIVE UP</span>
+      </article>
+
+      <article class="mj-card">
+        <div class="mj-card-icon">&lt;/&gt;</div>
+        <span class="mj-number">03 / 04</span>
+        <h3>First Creation</h3>
+        <p>
+          ধীরে ধীরে শেখা, চেষ্টা এবং নতুন কিছু তৈরি করার
+          মধ্য দিয়ে নিজের Website তৈরি করতে শুরু করি।
+        </p>
+        <span class="mj-card-footer">A NEW BEGINNING</span>
+      </article>
+
+      <article class="mj-card">
+        <div class="mj-card-icon">🚀</div>
+        <span class="mj-number">04 / 04</span>
+        <h3>Today</h3>
+        <p>
+          আলহামদুলিল্লাহ, এখন মোটামুটি ভালো এগোচ্ছি।
+          আমি এখনো শিখছি এবং প্রতিদিন নিজেকে উন্নত করছি।
+        </p>
+        <span class="mj-card-footer">STILL GROWING</span>
+      </article>
+
+    </div>
+
+    <div class="mj-bottom-glow"></div>
+  </div>
+
+  <div class="mj-controls">
+    <button type="button" id="mjPrev" aria-label="Previous card">‹</button>
+    <div class="mj-dots" id="mjDots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <button type="button" id="mjNext" aria-label="Next card">›</button>
+  </div>
+
+  <p class="mj-hint">← SWIPE OR DRAG TO EXPLORE →</p>
+
+  <div class="mj-ending">
+    <h3>Still Learning. Still Building.</h3>
+    <p>Never Giving Up.</p>
+  </div>
+</section>
+
+<style>
+/* ===== SECTION ===== */
+#my-journey-3d {
+  position: relative;
+  width: 100%;
+  padding: 85px 15px 85px;
+  overflow: hidden;
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  font-family: inherit;
+  isolation: isolate;
+
+  /* Fade In */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#my-journey-3d.mj-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#my-journey-3d * {
+  box-sizing: border-box;
+}
+
+#my-journey-3d .mj-heading {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 15px;
+}
+
+#my-journey-3d .mj-label {
+  color: #ff9b35;
+  letter-spacing: 5px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+#my-journey-3d .mj-heading h2 {
+  margin: 15px 0 10px;
+  color: #fff;
+  font-size: clamp(27px, 5vw, 44px);
+  font-weight: 800;
+}
+
+#my-journey-3d .mj-heading h2 span {
+  color: #ff922e;
+}
+
+#my-journey-3d .mj-heading p {
+  color: #bfc8dc;
+  font-size: 14px;
+}
+
+/* ===== 3D STAGE ===== */
+#my-journey-3d .mj-stage {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height: 570px;
+  margin: 0 auto;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+
+  /* Prevent card clipping inside stage */
+  overflow: visible;
+
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#my-journey-3d .mj-stage:active {
+  cursor: grabbing;
+}
+
+/* ===== ORBIT ===== */
+#my-journey-3d .mj-orbit {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 270px;
+  height: 270px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#my-journey-3d .mj-orbit-one {
+  border-top-color: #ff942f;
+  border-bottom-color: #168dff;
+  box-shadow: 0 0 15px #ff942f66, inset 0 0 15px #168dff33;
+  animation: mjOrbitSpin 12s linear infinite;
+}
+
+#my-journey-3d .mj-orbit-two {
+  width: 310px;
+  height: 310px;
+  border-left-color: #168dff;
+  border-right-color: #ff942f;
+  box-shadow: 0 0 18px #168dff55;
+  animation: mjOrbitSpin 18s linear infinite reverse;
+}
+
+@keyframes mjOrbitSpin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ===== PROFILE ===== */
+#my-journey-3d .mj-profile {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 40%;
+  width: 155px;
+  height: 155px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #ff982e, #168dff, #a34cff);
+  box-shadow: 0 0 25px #ff922e55, 0 0 45px #168dff44;
+  animation: mjProfileGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes mjProfileGlow {
+  from {
+    box-shadow: 0 0 18px #ff922e55, 0 0 35px #168dff33;
+  }
+  to {
+    box-shadow: 0 0 32px #ff922e99, 0 0 55px #168dff66;
+  }
+}
+
+#my-journey-3d .mj-profile img,
+#my-journey-3d .mj-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#my-journey-3d .mj-profile img {
+  position: relative;
+  z-index: 2;
+  filter: brightness(1.02) contrast(1.03) saturate(.95);
+}
+
+#my-journey-3d .mj-photo-placeholder {
+  position: absolute;
+  inset: 5px;
+  z-index: 1;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background: radial-gradient(circle, #263c5d, #101827 75%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffad55;
+}
+
+#my-journey-3d .mj-photo-placeholder span {
+  font-size: 45px;
+  line-height: 1;
+}
+
+#my-journey-3d .mj-photo-placeholder small {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ===== CAROUSEL ===== */
+#my-journey-3d .mj-carousel {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  z-index: 3;
+}
+
+#my-journey-3d .mj-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 215px;
+  height: 255px;
+  padding: 23px 19px;
+  border: 1px solid #ffffff55;
+  border-radius: 20px;
+  text-align: left;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(145deg, #ffffff20, #111a2cbb 75%);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  box-shadow: 0 0 22px #168dff22, inset 0 0 20px #ffffff0b;
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+  transition: border-color .3s, box-shadow .3s;
+}
+
+#my-journey-3d .mj-card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -45px;
+  right: -35px;
+  border-radius: 50%;
+  background: #ff942f33;
+  filter: blur(22px);
+}
+
+#my-journey-3d .mj-card-icon {
+  font-size: 35px;
+  font-weight: 800;
+  color: #ff9b35;
+  text-shadow: 0 0 15px #ff942f;
+  margin-bottom: 13px;
+}
+
+#my-journey-3d .mj-number {
+  display: block;
+  color: #69baff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+#my-journey-3d .mj-card h3 {
+  font-size: 22px;
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+#my-journey-3d .mj-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #e0e7f5;
+  margin: 0;
+}
+
+#my-journey-3d .mj-card-footer {
+  position: absolute;
+  bottom: 17px;
+  left: 19px;
+  color: #ffad55;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+/* ===== BOTTOM GLOW ===== */
+#my-journey-3d .mj-bottom-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  width: 75%;
+  height: 35px;
+  transform: translateX(-50%);
+  background: #168dff55;
+  filter: blur(35px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ===== CONTROLS ===== */
+#my-journey-3d .mj-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+#my-journey-3d .mj-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #ff9b35;
+  color: #ffad55;
+  background: #111827;
+  font-size: 29px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#my-journey-3d .mj-dots {
+  display: flex;
+  gap: 9px;
+}
+
+#my-journey-3d .mj-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #68758b;
+  transition: .3s;
+}
+
+#my-journey-3d .mj-dots span.active {
+  width: 23px;
+  border-radius: 10px;
+  background: #ff9b35;
+  box-shadow: 0 0 12px #ff9b35;
+}
+
+#my-journey-3d .mj-hint {
+  margin-top: 15px;
+  color: #8999b5;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+#my-journey-3d .mj-ending {
+  position: relative;
+  z-index: 2;
+  margin-top: 35px;
+}
+
+#my-journey-3d .mj-ending h3 {
+  color: #fff;
+  font-size: clamp(18px, 3vw, 25px);
+  margin-bottom: 5px;
+}
+
+#my-journey-3d .mj-ending p {
+  color: #ff9b35;
+  font-size: 27px;
+  font-weight: 800;
+  font-style: italic;
+  margin: 0;
+  text-shadow: 0 0 18px #ff922e66;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  #my-journey-3d {
+    padding: 65px 8px 70px;
+  }
+
+  #my-journey-3d .mj-stage {
+    height: 570px;
+  }
+
+  #my-journey-3d .mj-profile {
+    width: 125px;
+    height: 125px;
+    top: 35%;
+  }
+
+  #my-journey-3d .mj-orbit {
+    top: 35%;
+    width: 215px;
+    height: 215px;
+  }
+
+  #my-journey-3d .mj-orbit-two {
+    width: 250px;
+    height: 250px;
+  }
+
+  #my-journey-3d .mj-carousel {
+    top: 67%;
+  }
+
+  #my-journey-3d .mj-card {
+    width: 190px;
+    height: 235px;
+    padding: 18px 15px;
+  }
+
+  #my-journey-3d .mj-card h3 {
+    font-size: 19px;
+  }
+
+  #my-journey-3d .mj-card p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  #my-journey-3d .mj-card-footer {
+    left: 15px;
+  }
+
+  #my-journey-3d .mj-ending p {
+    font-size: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #my-journey-3d,
+  #my-journey-3d .mj-orbit,
+  #my-journey-3d .mj-profile {
+    animation: none;
+    transition: none;
+  }
+}
+</style>
+
+<script>
+(() => {
+  const section = document.getElementById("my-journey-3d");
+  const stage = document.getElementById("mjStage");
+  const carousel = document.getElementById("mjCarousel");
+  const cards = Array.from(carousel.querySelectorAll(".mj-card"));
+  const dots = Array.from(document.querySelectorAll("#mjDots span"));
+  const prev = document.getElementById("mjPrev");
+  const next = document.getElementById("mjNext");
+
+  if (!section || !stage || !carousel || !cards.length) return;
+
+  /* ===== FADE IN ON SCROLL ===== */
+  if ("IntersectionObserver" in window) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.add("mj-visible");
+          fadeObserver.unobserve(section);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeObserver.observe(section);
+  } else {
+    section.classList.add("mj-visible");
+  }
+
+  /* ===== 3D CAROUSEL ===== */
+  let rotation = 0;
+  let velocity = 0;
+  let dragging = false;
+  let lastX = 0;
+  let lastTime = 0;
+  let visible = !document.hidden;
+  let lastFrame = 0;
+
+  const autoSpeed = 7;
+
+  /* Responsive radius to keep cards inside screen */
+  function getRadius() {
+    return Math.max(
+      70,
+      Math.min(260, stage.clientWidth / 2 - 105)
+    );
+  }
+
+  function updateCards() {
+    const radius = getRadius();
+
+    cards.forEach((card, i) => {
+      const angle = i * 90 + rotation;
+      const normalized = ((angle % 360) + 360) % 360;
+      const distance = Math.min(normalized, 360 - normalized);
+      const frontness = Math.max(
+        0,
+        Math.cos(distance * Math.PI / 180)
+      );
+
+      card.style.transform =
+        `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`;
+
+      card.style.opacity = 0.48 + frontness * 0.52;
+      card.style.filter = `brightness(${0.65 + frontness * 0.55})`;
+      card.style.zIndex = Math.round(frontness * 10);
+
+      card.style.boxShadow = frontness > 0.85
+        ? "0 0 32px #ff942f66, inset 0 0 22px #ffffff16"
+        : "0 0 15px #168dff22";
+    });
+
+    const active = Math.round(-rotation / 90);
+    const activeIndex = ((active % 4) + 4) % 4;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === activeIndex);
+    });
+  }
+
+  function animate(time) {
+    if (!lastFrame) lastFrame = time;
+
+    const delta = Math.min((time - lastFrame) / 1000, 0.04);
+    lastFrame = time;
+
+    if (visible && !dragging) {
+      if (Math.abs(velocity) > 0.04) {
+        rotation += velocity;
+        velocity *= Math.pow(0.94, delta * 60);
+      } else {
+        velocity = 0;
         rotation -= autoSpeed * delta;
       }
+
       updateCards();
     }
 
@@ -1481,10 +2086,10 @@ hard work and building a better future.
 
   stage.addEventListener("pointerdown", e => {
     dragging = true;
-    startX = e.clientX;
     lastX = e.clientX;
     lastTime = performance.now();
     velocity = 0;
+
     stage.setPointerCapture(e.pointerId);
   });
 
@@ -1500,6 +2105,7 @@ hard work and building a better future.
 
     lastX = e.clientX;
     lastTime = now;
+
     updateCards();
   });
 
@@ -1527,12 +2133,13 @@ hard work and building a better future.
     visible = !document.hidden;
   });
 
+  window.addEventListener("resize", updateCards);
+
   updateCards();
   requestAnimationFrame(animate);
 })();
 </script>
 <!-- ================= END MY JOURNEY 3D ================= -->
-
 
     
 
