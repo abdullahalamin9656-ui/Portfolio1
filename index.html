@@ -775,59 +775,332 @@ footer span {
 </div>
 </header>
 
-<!-- HOME -->
-<section class="container hero" id="home">
 
-<div class="hero-content reveal">
+<style>
+/* ===== ALAMIN CINEMATIC HOME ===== */
 
-<div class="subtitle">WELCOME TO MY PORTFOLIO</div>
+.hero.lamp-home {
+  gap: 35px;
+  min-height: 90vh;
+}
 
-<h1>I'm <span>ALAMIN</span></h1>
+.lamp-scene {
+  position: relative;
+  width: min(440px, 42vw);
+  height: 550px;
+  flex: 0 0 min(440px, 42vw);
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+  isolation: isolate;
+  animation: none !important;
+}
 
-<h2>
-I'm a <span class="typing" id="typing"></span>
-</h2>
+.lamp-cable {
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  width: 3px;
+  height: 110px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,#222,#c5bdb0,#222);
+  z-index: 8;
+}
 
-<p>
-I am a passionate Web Developer who loves creating
-modern, responsive and user-friendly websites.
-I enjoy learning new technologies and turning ideas
-into beautiful digital experiences.
-</p>
+.lamp-fixture {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  width: 190px;
+  height: 145px;
+  transform: translateX(-50%);
+  transform-origin: top center;
+  animation: lampSway 5s ease-in-out infinite;
+  z-index: 9;
+}
 
-<div class="buttons">
+.lamp-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50px;
+  height: 19px;
+  transform: translateX(-50%);
+  border-radius: 10px 10px 3px 3px;
+  background: linear-gradient(90deg,#17191e,#aaa69e,#22252b);
+}
 
-<a href="#projects" class="btn btn-primary">
-Explore My Work ↗
-</a>
+.lamp-shade {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 178px;
+  height: 85px;
+  transform: translateX(-50%);
+  clip-path: polygon(24% 0,76% 0,100% 90%,94% 100%,6% 100%,0 90%);
+  background: linear-gradient(100deg,#101318,#454950 20%,#aaa69e 42%,#34383e 68%,#111419);
+  filter: drop-shadow(0 10px 9px #000b);
+}
 
-<a href="#contact" class="btn btn-outline">
-Contact Me
-</a>
+.lamp-shade:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent,#ffffff35,transparent);
+}
 
-<a href="cv.pdf" download class="btn btn-outline">
-📄 Download CV
-</a>
+.lamp-bulb {
+  position: absolute;
+  top: 83px;
+  left: 50%;
+  width: 22px;
+  height: 30px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #514638;
+  z-index: -1;
+  transition: 1s;
+}
 
-</div>
+.lamp-beam {
+  position: absolute;
+  z-index: 1;
+  top: 110px;
+  left: 50%;
+  width: 390px;
+  height: 430px;
+  transform: translateX(-50%);
+  clip-path: polygon(46% 0,54% 0,100% 100%,0 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255,190,100,.35),
+    rgba(255,155,55,.15) 50%,
+    transparent
+  );
+  opacity: 0;
+  filter: blur(5px);
+  transition: opacity 1.5s;
+  pointer-events: none;
+}
 
-<div class="socials">
-<a href="https://github.com/" target="_blank">GH</a>
-<a href="https://facebook.com/" target="_blank">FB</a>
-<a href="https://linkedin.com/" target="_blank">IN</a>
-</div>
+.lamp-halo {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 145px;
+  width: 360px;
+  height: 360px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse,
+    rgba(255,166,76,.25),
+    rgba(255,150,55,.10) 38%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 1.7s;
+  pointer-events: none;
+}
 
-</div>
+.hero-portrait {
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  max-height: 455px;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateX(-50%) translateY(18px);
+  opacity: .08;
+  filter: brightness(.12) saturate(.65) contrast(1.15);
+  transition: opacity 1.7s, filter 1.7s, transform 1.7s;
+  pointer-events: none;
+}
 
-<!-- PHOTO PLACEHOLDER -->
-<div class="hero-image reveal">
-<div class="profile-placeholder">
-<strong>A</strong>
-<small>YOUR PHOTO HERE</small>
-</div>
-</div>
+.lamp-floor-glow {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 50%;
+  width: 75%;
+  height: 34px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #ff9e3d;
+  filter: blur(34px);
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+#lampScene.lamp-on .lamp-bulb {
+  background: #fff2bd;
+  box-shadow: 0 0 10px 7px #ffca6b,
+              0 0 35px 19px #ff9c3b;
+}
+
+#lampScene.lamp-on .lamp-beam,
+#lampScene.lamp-on .lamp-halo,
+#lampScene.lamp-on .lamp-floor-glow {
+  opacity: 1;
+}
+
+#lampScene.lamp-on .hero-portrait {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  filter: brightness(.78) saturate(.88) contrast(1.12)
+          drop-shadow(0 0 24px rgba(255,158,65,.22));
+}
+
+@keyframes lampSway {
+  0%,100% { transform: translateX(-50%) rotate(-1.4deg); }
+  50% { transform: translateX(-50%) rotate(1.4deg); }
+}
+
+@media(max-width:800px) {
+  .hero.lamp-home {
+    flex-direction: column-reverse;
+    gap: 8px;
+    padding-top: 35px;
+  }
+
+  .lamp-scene {
+    width: min(390px,88vw);
+    height: 430px;
+    flex: 0 0 430px;
+    margin: 0 auto;
+  }
+
+  .lamp-cable {
+    top: -45px;
+    height: 85px;
+  }
+
+  .lamp-fixture {
+    top: 28px;
+    transform: translateX(-50%) scale(.82);
+  }
+
+  .lamp-beam {
+    width: 320px;
+    height: 320px;
+  }
+
+  .lamp-halo {
+    width: 300px;
+    height: 290px;
+  }
+
+  .hero-portrait {
+    max-height: 355px;
+  }
+}
+
+@media(max-width:480px) {
+  .lamp-scene {
+    height: 365px;
+    flex-basis: 365px;
+    width: 92vw;
+  }
+
+  .lamp-fixture {
+    transform: translateX(-50%) scale(.72);
+  }
+
+  .hero-portrait {
+    max-height: 315px;
+  }
+
+  .lamp-beam {
+    width: 280px;
+    height: 280px;
+  }
+}
+</style>
+
+<!-- HOME SECTION -->
+<section class="container hero lamp-home" id="home">
+
+  <div class="hero-content reveal">
+    <div class="subtitle">WELCOME TO MY PORTFOLIO</div>
+
+    <h1>I'm <span>ALAMIN</span></h1>
+
+    <h2>I'm a <span class="typing" id="typing"></span></h2>
+
+    <p>
+      I am a passionate Web Developer who loves creating
+      modern, responsive and user-friendly websites.
+      I enjoy learning new technologies and turning ideas
+      into beautiful digital experiences.
+    </p>
+
+    <div class="buttons">
+      <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+      <a href="cv.pdf" download class="btn btn-outline">📄 Download CV</a>
+    </div>
+
+    <div class="socials">
+      <a href="https://github.com/" target="_blank">GH</a>
+      <a href="https://facebook.com/" target="_blank">FB</a>
+      <a href="https://linkedin.com/" target="_blank">IN</a>
+    </div>
+  </div>
+
+  <!-- 3D HANGING LAMP -->
+  <div class="hero-image lamp-scene" id="lampScene">
+
+    <div class="lamp-cable"></div>
+
+    <div class="lamp-fixture">
+      <div class="lamp-top"></div>
+      <div class="lamp-shade"></div>
+      <div class="lamp-bulb"></div>
+    </div>
+
+    <div class="lamp-beam"></div>
+    <div class="lamp-halo"></div>
+
+    <img
+      class="hero-portrait"
+      src="assets/alamin-portrait.png"
+      alt="Alamin"
+    >
+
+    <div class="lamp-floor-glow"></div>
+
+  </div>
 
 </section>
+
+<script>
+/* LAMP INTRO ANIMATION */
+
+(function () {
+  function startLamp() {
+    const lamp = document.getElementById("lampScene");
+
+    if (!lamp || lamp.dataset.started) return;
+
+    lamp.dataset.started = "true";
+
+    setTimeout(function () {
+      lamp.classList.add("lamp-on");
+    }, 1600);
+  }
+
+  if (document.readyState === "complete") {
+    startLamp();
+  } else {
+    window.addEventListener("load", startLamp);
+  }
+})();
+</script>
+
 
 
 <!-- =============== ABOUT ME SECTION =============== -->
