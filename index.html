@@ -971,88 +971,872 @@ create useful digital experiences for people.
 <h2>My <span>Projects</span></h2>
 
 
-<!-- PROJECTS SECTION -->
-<section id="projects" class="projects section">
+<!-- ========== ANIMATED GLASS PROJECT FOLDER ========== -->
+<section id="projects" class="folder-projects">
 
-    <div class="section-title">
-        <span>MY WORK</span>
-        <h2>Featured Projects</h2>
-        <p>Some of my recent web development projects</p>
+    <div class="folder-section-heading">
+        <span class="folder-subtitle">MY CREATIVE WORK</span>
+        <h2>My <span>Projects</span></h2>
+        <p>Explore my web development projects</p>
     </div>
 
-    <div class="projects-container">
+    <div class="folder-scene" id="folderScene">
 
-        <!-- PROJECT 1 -->
-        <div class="project-card">
+        <!-- GLASS FOLDER -->
+        <div class="glass-folder">
 
-            <div class="project-image">
-                <i class="fas fa-shopping-cart"></i>
+            <div class="folder-back"></div>
+
+            <div class="folder-tab"></div>
+
+            <div class="folder-glass">
+
+                <div class="folder-header">
+                    <div class="folder-title">
+                        <i class="fa-solid fa-folder"></i>
+                        <span>ALAMIN PROJECTS</span>
+                    </div>
+
+                    <span class="folder-count">03 FILES</span>
+                </div>
+
+                <div class="folder-bottom">
+                    <span>WEB DEVELOPMENT</span>
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
             </div>
 
-            <div class="project-content">
-                <span class="project-category">E-Commerce</span>
+        </div>
+
+
+        <!-- PROJECT FILE 1 -->
+        <a class="project-file file-one"
+           href="https://abdullahalamin9656-ui.github.io/FarNaz-Tech/index.html"
+           target="_blank"
+           rel="noopener noreferrer">
+
+            <div class="file-glass">
+
+                <div class="file-icon orange">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <span class="file-number">01</span>
 
                 <h3>FarNaz Tech</h3>
 
-                <p>
-                    A modern e-commerce website with a responsive design,
-                    product showcase and user-friendly shopping experience.
-                </p>
+                <p>E-Commerce Website</p>
 
-                <div class="project-tech">
+                <div class="file-tech">
                     <span>HTML</span>
                     <span>CSS</span>
-                    <span>JavaScript</span>
+                    <span>JS</span>
                 </div>
 
-                <div class="project-links">
-                    <a href="https://abdullahalamin9656-ui.github.io/FarNaz-Tech/index.html"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt"></i>
-                        Live Demo
-                    </a>
+                <div class="file-open">
+                    LIVE DEMO
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
-            </div>
-        </div>
 
-
-        <!-- PROJECT 2 -->
-        <div class="project-card">
-
-            <div class="project-image">
-                <i class="fas fa-user-circle"></i>
             </div>
 
-            <div class="project-content">
-                <span class="project-category">Portfolio</span>
+        </a>
 
-                <h3>Personal Portfolio</h3>
 
-                <p>
-                    A personal portfolio website showcasing my skills,
-                    experience, projects and contact information.
-                </p>
+        <!-- PROJECT FILE 2 -->
+        <a class="project-file file-two"
+           href="https://abdullahalamin9656-ui.github.io/Portfolio1/#home"
+           target="_blank"
+           rel="noopener noreferrer">
 
-                <div class="project-tech">
+            <div class="file-glass">
+
+                <div class="file-icon blue">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <span class="file-number">02</span>
+
+                <h3>Portfolio Website</h3>
+
+                <p>Personal Portfolio</p>
+
+                <div class="file-tech">
                     <span>HTML</span>
                     <span>CSS</span>
-                    <span>JavaScript</span>
+                    <span>JS</span>
                 </div>
 
-                <div class="project-links">
-                    <a href="https://abdullahalamin9656-ui.github.io/Portfolio1/#home"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt"></i>
-                        Live Demo
-                    </a>
+                <div class="file-open">
+                    LIVE DEMO
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
+
             </div>
+
+        </a>
+
+
+        <!-- PROJECT FILE 3 -->
+        <div class="project-file file-three">
+
+            <div class="file-glass">
+
+                <div class="file-icon purple">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+
+                <span class="file-number">03</span>
+
+                <h3>Next Project</h3>
+
+                <p>Coming Soon</p>
+
+                <div class="file-tech">
+                    <span>NEW</span>
+                    <span>SOON</span>
+                </div>
+
+                <div class="file-open locked">
+                    <i class="fa-solid fa-lock"></i>
+                    IN PROGRESS
+                </div>
+
+            </div>
+
         </div>
+
 
     </div>
+
+    <div class="folder-hint">
+        <i class="fa-solid fa-computer-mouse"></i>
+        Click a file to explore the project
+    </div>
+
 </section>
+
+
+<style>
+
+/* ================= SECTION ================= */
+
+.folder-projects {
+    position: relative;
+    padding: 100px 20px 80px;
+    overflow: hidden;
+    background: transparent;
+    font-family: inherit;
+}
+
+.folder-section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.folder-subtitle {
+    color: #ff8b3d;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.folder-section-heading h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin: 12px 0;
+    color: #fff;
+}
+
+.folder-section-heading h2 span {
+    color: #ff8b3d;
+}
+
+.folder-section-heading p {
+    color: #aab2c0;
+    font-size: 15px;
+}
+
+
+/* ================= SCENE ================= */
+
+.folder-scene {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 540px;
+    margin: 0 auto;
+
+    perspective: 1200px;
+}
+
+
+/* ================= FOLDER ================= */
+
+.glass-folder {
+    position: absolute;
+    width: 88%;
+    height: 310px;
+
+    left: 6%;
+    bottom: 15px;
+
+    opacity: 0;
+    transform: translateY(100px) scale(.85);
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s cubic-bezier(.2,.8,.2,1);
+
+    z-index: 1;
+}
+
+.folder-back {
+    position: absolute;
+    top: -35px;
+    left: 4%;
+
+    width: 48%;
+    height: 75px;
+
+    border: 1px solid rgba(255,147,65,.45);
+
+    background: rgba(255,130,40,.10);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-radius: 25px 25px 0 0;
+
+    transform: skewX(-8deg);
+}
+
+
+.folder-tab {
+    position: absolute;
+    top: -25px;
+    left: 8%;
+
+    width: 40%;
+    height: 65px;
+
+    background: rgba(255,145,55,.12);
+
+    border: 1px solid rgba(255,145,55,.4);
+
+    border-radius: 20px 20px 0 0;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.folder-glass {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 25px rgba(255,135,45,.12),
+        inset 0 0 25px rgba(255,255,255,.04),
+        0 20px 50px rgba(0,0,0,.3);
+
+    overflow: hidden;
+}
+
+
+.folder-glass::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255,255,255,.08) 45%,
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.folder-header {
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+
+.folder-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.folder-title i {
+    color: #ff963f;
+    font-size: 25px;
+}
+
+
+.folder-count {
+    color: #ff963f;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+.folder-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    right: 30px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: rgba(255,255,255,.35);
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+
+/* ================= FILES ================= */
+
+.project-file {
+    position: absolute;
+
+    width: 230px;
+    height: 300px;
+
+    top: 30px;
+
+    display: block;
+
+    text-decoration: none;
+    color: #fff;
+
+    opacity: 0;
+
+    transform:
+        translateY(180px)
+        scale(.65)
+        rotateX(15deg);
+
+    transition:
+        opacity .8s ease,
+        transform 1s cubic-bezier(.16,1,.3,1);
+
+    z-index: 5;
+}
+
+
+.file-one {
+    left: 13%;
+    transition-delay: .25s;
+}
+
+
+.file-two {
+    left: calc(50% - 115px);
+    transition-delay: .5s;
+}
+
+
+.file-three {
+    right: 13%;
+    transition-delay: .75s;
+}
+
+
+.file-glass {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 22px 18px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.035)
+        );
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.25),
+        inset 0 0 20px rgba(255,255,255,.04);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.file-glass::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background: var(--file-color);
+
+    box-shadow: 0 0 20px var(--file-color);
+}
+
+
+.file-one {
+    --file-color: #ff963f;
+}
+
+
+.file-two {
+    --file-color: #43a5ff;
+}
+
+
+.file-three {
+    --file-color: #a66cff;
+}
+
+
+.project-file:hover .file-glass {
+    transform: translateY(-15px) scale(1.04);
+
+    border-color: var(--file-color);
+
+    box-shadow:
+        0 0 30px color-mix(in srgb, var(--file-color), transparent 70%),
+        0 20px 50px rgba(0,0,0,.35);
+}
+
+
+.file-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 8px auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 27px;
+
+    background: rgba(255,255,255,.07);
+
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+
+.file-icon.orange {
+    color: #ff963f;
+    box-shadow: 0 0 25px rgba(255,150,63,.15);
+}
+
+
+.file-icon.blue {
+    color: #43a5ff;
+    box-shadow: 0 0 25px rgba(67,165,255,.15);
+}
+
+
+.file-icon.purple {
+    color: #a66cff;
+    box-shadow: 0 0 25px rgba(166,108,255,.15);
+}
+
+
+.file-number {
+    display: block;
+
+    color: var(--file-color);
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+
+.project-file h3 {
+    color: #fff;
+
+    font-size: 18px;
+
+    margin: 5px 0 10px;
+}
+
+
+.project-file p {
+    color: #aab2c0;
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+.file-tech {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+
+    margin-bottom: 20px;
+}
+
+
+.file-tech span {
+    font-size: 9px;
+
+    padding: 5px 8px;
+
+    color: #c5cbd5;
+
+    border: 1px solid rgba(255,255,255,.13);
+
+    border-radius: 5px;
+
+    background: rgba(255,255,255,.04);
+}
+
+
+.file-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+
+    padding: 10px 8px;
+
+    border-radius: 30px;
+
+    border: 1px solid var(--file-color);
+
+    color: var(--file-color);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    transition: .3s ease;
+}
+
+
+.project-file:hover .file-open {
+    background: var(--file-color);
+    color: #080d16;
+}
+
+
+.file-open.locked {
+    color: #999;
+    border-color: rgba(255,255,255,.15);
+}
+
+
+/* ================= ANIMATION ================= */
+
+/* Folder appears */
+
+.folder-scene.in-view .glass-folder {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+}
+
+
+/* Files come out of folder */
+
+.folder-scene.in-view .project-file {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        rotateX(0);
+}
+
+
+/* Animation reset when leaving screen */
+
+.folder-scene:not(.in-view) .project-file {
+    transition-delay: 0s;
+}
+
+
+/* ================= HINT ================= */
+
+.folder-hint {
+    text-align: center;
+
+    color: #818b9b;
+
+    font-size: 12px;
+
+    margin-top: 25px;
+
+    letter-spacing: 1px;
+}
+
+
+.folder-hint i {
+    color: #ff963f;
+
+    margin-right: 8px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .folder-projects {
+        padding: 70px 10px;
+    }
+
+    .folder-scene {
+        height: 430px;
+    }
+
+    .glass-folder {
+        width: 96%;
+        left: 2%;
+        height: 260px;
+        bottom: 10px;
+    }
+
+    .folder-header {
+        padding: 0 15px;
+        height: 60px;
+    }
+
+    .folder-title {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .folder-title i {
+        font-size: 20px;
+    }
+
+    .folder-count {
+        font-size: 9px;
+    }
+
+    .folder-bottom {
+        left: 15px;
+        right: 15px;
+        font-size: 8px;
+    }
+
+    .project-file {
+        width: 30%;
+        height: 235px;
+        top: 40px;
+    }
+
+    .file-one {
+        left: 3%;
+    }
+
+    .file-two {
+        left: 35%;
+    }
+
+    .file-three {
+        right: 3%;
+    }
+
+    .file-glass {
+        padding: 15px 7px;
+        border-radius: 14px;
+    }
+
+    .file-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 19px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .project-file h3 {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .project-file p {
+        font-size: 9px;
+        min-height: 25px;
+    }
+
+    .file-tech {
+        gap: 3px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+
+    .file-tech span {
+        font-size: 7px;
+        padding: 4px;
+    }
+
+    .file-open {
+        font-size: 8px;
+        padding: 8px 3px;
+        letter-spacing: 0;
+        gap: 3px;
+    }
+
+    .file-number {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .folder-back {
+        top: -25px;
+        height: 55px;
+    }
+
+    .folder-tab {
+        top: -20px;
+        height: 45px;
+    }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+
+    .folder-scene {
+        height: 390px;
+    }
+
+    .project-file {
+        height: 220px;
+    }
+
+    .project-file h3 {
+        font-size: 10px;
+    }
+
+    .file-glass {
+        padding: 12px 5px;
+    }
+
+}
+
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .folder-scene *,
+    .folder-scene *::before,
+    .folder-scene *::after {
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* ================= SCROLL ANIMATION ================= */
+
+(function () {
+
+    const scene = document.getElementById("folderScene");
+
+    if (!scene) return;
+
+    const observer = new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    scene.classList.add("in-view");
+
+                } else {
+
+                    scene.classList.remove("in-view");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.25
+        }
+
+    );
+
+    observer.observe(scene);
+
+})();
+
+</script>
+<!-- ========== END PROJECT FOLDER ========== -->
+
     
 
 <!-- CONTACT -->
