@@ -1240,6 +1240,40 @@ footer span {
     }
 }
 
+/* ===== LAMP POSITION FINAL FIX ===== */
+
+/* Mobile: prevent lamp from being cut by header */
+@media (max-width: 480px) {
+    .lamp-fixture {
+        top: 28px !important;
+    }
+
+    .lamp-cable {
+        top: -45px !important;
+        height: 85px !important;
+    }
+
+    .lamp-beam {
+        top: 75px !important;
+    }
+}
+
+/* Split layout: keep lamp farther from the head */
+@media (min-width: 481px) {
+    .lamp-fixture {
+        top: -35px !important;
+    }
+
+    .lamp-cable {
+        top: -108px !important;
+        height: 138px !important;
+    }
+
+    .lamp-beam {
+        top: 45px !important;
+    }
+}
+
 
 
     
