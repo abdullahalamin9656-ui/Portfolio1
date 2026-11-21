@@ -15,9 +15,9 @@
     --card: #141f2e;
     --orange: #ff8b3d;
     --orange2: #ffb16f;
-    --white: #ffffff;
+    --white: #fff;
     --gray: #a4afbf;
-    --border: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,.08);
 }
 
 * {
@@ -28,11 +28,11 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 85px;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins, sans-serif;
     background: var(--bg);
     color: var(--white);
     overflow-x: hidden;
@@ -49,7 +49,38 @@ a {
     margin: auto;
 }
 
-/* Animated background */
+/* PRELOADER */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .6s, visibility .6s;
+}
+
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: var(--orange);
+    animation: loaderPulse 1s infinite alternate;
+}
+
+@keyframes loaderPulse {
+    from { opacity: .4; transform: scale(.95); }
+    to { opacity: 1; transform: scale(1.05); }
+}
+
+/* PARTICLES */
 
 #particles {
     position: fixed;
@@ -63,8 +94,8 @@ a {
 header {
     position: sticky;
     top: 0;
-    z-index: 999;
-    background: rgba(8,13,22,0.88);
+    z-index: 1000;
+    background: rgba(8,13,22,.88);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
 }
@@ -88,29 +119,40 @@ nav {
 
 .nav-links {
     display: flex;
-    align-items: center;
     gap: 28px;
+    align-items: center;
 }
 
 .nav-links a {
     color: var(--gray);
     font-size: 14px;
-    transition: 0.3s;
+    position: relative;
+    transition: .3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--orange);
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+    background: var(--orange);
 }
 
 .menu-btn {
     display: none;
-    color: white;
     background: transparent;
+    color: white;
     border: 1px solid var(--border);
-    border-radius: 9px;
-    font-size: 23px;
-    padding: 6px 12px;
-    cursor: pointer;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 22px;
 }
 
 /* HERO */
@@ -132,7 +174,6 @@ nav {
     color: var(--orange);
     letter-spacing: 4px;
     font-size: 13px;
-    font-weight: 600;
 }
 
 .hero h1 {
@@ -144,7 +185,7 @@ nav {
 
 .hero h1 span {
     color: var(--orange);
-    text-shadow: 0 0 30px rgba(255,139,61,0.2);
+    text-shadow: 0 0 30px rgba(255,139,61,.2);
 }
 
 .hero h2 {
@@ -156,11 +197,6 @@ nav {
     color: var(--orange);
     border-right: 3px solid var(--orange);
     padding-right: 5px;
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
 }
 
 .hero p {
@@ -171,31 +207,31 @@ nav {
 
 .buttons {
     display: flex;
-    gap: 15px;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
 .btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 13px 23px;
+    padding: 12px 22px;
     border-radius: 10px;
     font-weight: 600;
     font-size: 14px;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .btn-primary {
     background: var(--orange);
     color: #111;
-    box-shadow: 0 0 20px rgba(255,139,61,0.15);
+    box-shadow: 0 0 20px rgba(255,139,61,.15);
 }
 
 .btn-primary:hover {
     background: var(--orange2);
-    box-shadow: 0 0 30px rgba(255,139,61,0.45);
+    box-shadow: 0 0 30px rgba(255,139,61,.4);
     transform: translateY(-4px);
 }
 
@@ -205,11 +241,36 @@ nav {
 }
 
 .btn-outline:hover {
-    background: rgba(255,139,61,0.12);
+    background: rgba(255,139,61,.12);
     transform: translateY(-4px);
 }
 
-/* PROFILE PLACEHOLDER */
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.socials a {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--orange);
+    transition: .3s;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.socials a:hover {
+    background: var(--orange);
+    color: #111;
+    transform: translateY(-5px);
+}
+
+/* PROFILE */
 
 .hero-image {
     width: 320px;
@@ -220,8 +281,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #192638, #0b111a);
-    box-shadow: 0 0 35px rgba(255,139,61,0.15);
+    background: linear-gradient(145deg,#192638,#0b111a);
+    box-shadow: 0 0 40px rgba(255,139,61,.15);
     animation: float 4s ease-in-out infinite;
 }
 
@@ -237,16 +298,12 @@ nav {
     line-height: 1;
 }
 
-.profile-placeholder small {
-    font-size: 12px;
-}
-
 @keyframes float {
     0%,100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
 }
 
-/* SECTIONS */
+/* SECTION */
 
 section {
     padding: 90px 0;
@@ -263,7 +320,7 @@ section {
 }
 
 .section-title h2 {
-    font-size: clamp(30px, 5vw, 42px);
+    font-size: clamp(30px,5vw,42px);
     margin-top: 8px;
 }
 
@@ -272,7 +329,8 @@ section {
 }
 
 .about-section,
-.projects-section {
+.projects-section,
+.experience-section {
     background: var(--bg2);
 }
 
@@ -281,12 +339,11 @@ section {
     border: 1px solid var(--border);
     padding: 32px;
     border-radius: 20px;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .about-card:hover {
-    border-color: rgba(255,139,61,0.4);
-    box-shadow: 0 0 25px rgba(255,139,61,0.05);
+    border-color: rgba(255,139,61,.4);
 }
 
 .about-card h3 {
@@ -312,13 +369,13 @@ section {
     border: 1px solid var(--border);
     padding: 25px;
     border-radius: 16px;
-    transition: 0.35s;
+    transition: .35s;
 }
 
 .skill-card:hover {
     transform: translateY(-8px);
     border-color: var(--orange);
-    box-shadow: 0 10px 30px rgba(255,139,61,0.08);
+    box-shadow: 0 10px 30px rgba(255,139,61,.08);
 }
 
 .skill-icon {
@@ -341,7 +398,7 @@ section {
 .skill-fill {
     width: 0;
     height: 100%;
-    background: linear-gradient(90deg, var(--orange), var(--orange2));
+    background: linear-gradient(90deg,var(--orange),var(--orange2));
     border-radius: 20px;
     transition: width 1.5s ease;
 }
@@ -351,6 +408,54 @@ section {
     display: block;
     text-align: right;
     margin-top: 8px;
+}
+
+/* EXPERIENCE */
+
+.timeline {
+    max-width: 750px;
+    margin: auto;
+    border-left: 2px solid var(--orange);
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: .3s;
+}
+
+.timeline-item:hover {
+    border-color: var(--orange);
+    transform: translateX(5px);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -39px;
+    top: 30px;
+    width: 14px;
+    height: 14px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--orange);
+}
+
+.timeline-item small {
+    color: var(--orange);
+}
+
+.timeline-item h3 {
+    margin: 8px 0;
+}
+
+.timeline-item p {
+    color: var(--gray);
 }
 
 /* PROJECTS */
@@ -366,13 +471,13 @@ section {
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 25px;
-    transition: 0.35s;
+    transition: .35s;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     border-color: var(--orange);
-    box-shadow: 0 10px 35px rgba(255,139,61,0.08);
+    box-shadow: 0 10px 35px rgba(255,139,61,.08);
 }
 
 .project-icon {
@@ -396,8 +501,19 @@ section {
     padding: 5px 12px;
     border-radius: 7px;
     color: var(--orange2);
-    background: rgba(255,139,61,0.1);
+    background: rgba(255,139,61,.1);
     font-size: 12px;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.project-links a {
+    color: var(--orange);
+    font-size: 13px;
 }
 
 /* CONTACT */
@@ -413,7 +529,7 @@ section {
     border: 1px solid var(--border);
     border-radius: 22px;
     background: var(--card);
-    box-shadow: 0 0 40px rgba(255,139,61,0.04);
+    box-shadow: 0 0 40px rgba(255,139,61,.04);
 }
 
 .contact-box h2 {
@@ -444,7 +560,7 @@ section {
     padding: 13px 18px;
     color: var(--gray);
     font-size: 14px;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .contact-item:hover {
@@ -467,12 +583,12 @@ footer span {
     color: var(--orange);
 }
 
-/* SCROLL REVEAL */
+/* REVEAL */
 
 .reveal {
     opacity: 0;
     transform: translateY(35px);
-    transition: 0.8s ease;
+    transition: .8s ease;
 }
 
 .reveal.active {
@@ -480,9 +596,42 @@ footer span {
     transform: translateY(0);
 }
 
+/* BACK TO TOP */
+
+#topBtn {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    background: var(--orange);
+    color: #111;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: .3s;
+    box-shadow: 0 0 20px rgba(255,139,61,.25);
+}
+
+#topBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#topBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(255,139,61,.5);
+}
+
 /* MOBILE */
 
-@media(max-width: 800px) {
+@media(max-width:800px) {
     .hero {
         flex-direction: column-reverse;
         text-align: center;
@@ -495,7 +644,8 @@ footer span {
         margin: auto;
     }
 
-    .buttons {
+    .buttons,
+    .socials {
         justify-content: center;
     }
 
@@ -514,7 +664,7 @@ footer span {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width:600px) {
     nav {
         min-height: 65px;
     }
@@ -541,9 +691,12 @@ footer span {
     }
 
     .nav-links a {
-        display: block;
         padding: 12px;
         text-align: center;
+    }
+
+    .nav-links a.active::after {
+        display: none;
     }
 
     .skills-grid,
@@ -566,21 +719,32 @@ footer span {
     .contact-item {
         width: 100%;
     }
+
+    .timeline {
+        padding-left: 22px;
+    }
+
+    .timeline-item::before {
+        left: -31px;
+    }
 }
 
-/* REDUCED MOTION */
-
-@media(prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
     * {
         animation: none !important;
-        scroll-behavior: auto !important;
         transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
 </style>
 </head>
 
 <body>
+
+<!-- PRELOADER -->
+<div id="loader">
+    <div class="loader-logo">ALAMIN.</div>
+</div>
 
 <canvas id="particles"></canvas>
 
@@ -597,6 +761,7 @@ footer span {
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
@@ -635,7 +800,18 @@ Explore My Work ↗
 Contact Me
 </a>
 
+<a href="cv.pdf" download class="btn btn-outline">
+📄 Download CV
+</a>
+
 </div>
+
+<div class="socials">
+<a href="https://github.com/" target="_blank">GH</a>
+<a href="https://facebook.com/" target="_blank">FB</a>
+<a href="https://linkedin.com/" target="_blank">IN</a>
+</div>
+
 </div>
 
 <!-- PHOTO PLACEHOLDER -->
@@ -698,55 +874,87 @@ hard work and building a better future.
 <div class="skill-card">
 <div class="skill-icon">🌐</div>
 <h3>HTML</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="85%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
 <small>85%</small>
 </div>
 
 <div class="skill-card">
 <div class="skill-icon">🎨</div>
 <h3>CSS</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="75%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
 <small>75%</small>
 </div>
 
 <div class="skill-card">
 <div class="skill-icon">⚡</div>
 <h3>JavaScript</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="60%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="60%"></div></div>
 <small>60%</small>
 </div>
 
 <div class="skill-card">
 <div class="skill-icon">📱</div>
 <h3>Responsive Design</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="80%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
 <small>80%</small>
 </div>
 
 <div class="skill-card">
 <div class="skill-icon">💻</div>
 <h3>Web Development</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="70%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
 <small>70%</small>
 </div>
 
 <div class="skill-card">
 <div class="skill-icon">🚀</div>
 <h3>Learning</h3>
-<div class="skill-bar">
-<div class="skill-fill" data-width="90%"></div>
-</div>
+<div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
 <small>90%</small>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+
+<div class="container reveal">
+
+<div class="section-title">
+<small>MY JOURNEY</small>
+<h2>Experience <span>& Journey</span></h2>
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<small>Present</small>
+<h3>Web Developer</h3>
+<p>
+Learning and developing modern websites using
+HTML, CSS and JavaScript. Building responsive
+designs and improving my web development skills.
+</p>
+</div>
+
+<div class="timeline-item">
+<small>Learning Journey</small>
+<h3>Frontend Development</h3>
+<p>
+Exploring website design, responsive layouts,
+animations and modern frontend technologies.
+</p>
+</div>
+
+<div class="timeline-item">
+<small>Future Goal</small>
+<h3>Professional Developer</h3>
+<p>
+My goal is to become a skilled developer and
+create useful digital experiences for people.
+</p>
 </div>
 
 </div>
@@ -773,6 +981,10 @@ A modern online store concept with responsive
 design and product showcase.
 </p>
 <span class="project-tag">Web Development</span>
+<div class="project-links">
+<a href="#">Live Demo ↗</a>
+<a href="#">Source Code ↗</a>
+</div>
 </div>
 
 <div class="project-card">
@@ -783,6 +995,10 @@ A personal website to showcase my skills,
 profile and projects.
 </p>
 <span class="project-tag">Portfolio</span>
+<div class="project-links">
+<a href="#">Live Demo ↗</a>
+<a href="#">Source Code ↗</a>
+</div>
 </div>
 
 <div class="project-card">
@@ -793,6 +1009,10 @@ Exploring new ideas and building creative
 digital projects.
 </p>
 <span class="project-tag">Creative</span>
+<div class="project-links">
+<a href="#">Live Demo ↗</a>
+<a href="#">Source Code ↗</a>
+</div>
 </div>
 
 </div>
@@ -820,13 +1040,11 @@ Feel free to contact me.
 
 <div class="contact-info">
 
-<a class="contact-item"
-href="tel:+8801893241507">
+<a class="contact-item" href="tel:+8801893241507">
 📞 01893241507
 </a>
 
-<a class="contact-item"
-href="mailto:alaminabdullah339@gmail.com">
+<a class="contact-item" href="mailto:alaminabdullah339@gmail.com">
 ✉️ alaminabdullah339@gmail.com
 </a>
 
@@ -861,7 +1079,18 @@ Made with <span>♥</span>
 </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button id="topBtn" aria-label="Back to top">↑</button>
+
 <script>
+
+/* PRELOADER */
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hide");
+    }, 700);
+});
 
 /* MOBILE MENU */
 
@@ -902,6 +1131,7 @@ function typingEffect() {
     const currentWord = words[wordIndex];
 
     if (!deleting) {
+
         typingElement.textContent =
         currentWord.substring(0, charIndex + 1);
 
@@ -931,11 +1161,11 @@ function typingEffect() {
 
 typingEffect();
 
-/* SCROLL REVEAL */
+/* SCROLL REVEAL + SKILL ANIMATION */
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
 
@@ -953,12 +1183,62 @@ const revealObserver = new IntersectionObserver((entries) => {
 
     });
 
-}, {
-    threshold: 0.15
-});
+}, { threshold: 0.15 });
 
 revealElements.forEach(element => {
     revealObserver.observe(element);
+});
+
+/* BACK TO TOP */
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 400) {
+        topBtn.classList.add("show");
+    } else {
+        topBtn.classList.remove("show");
+    }
+
+});
+
+topBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+/* ACTIVE NAVBAR */
+
+const sections = document.querySelectorAll("section[id]");
+const navItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navItems.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+
+    });
+
 });
 
 /* PARTICLE BACKGROUND */
@@ -976,7 +1256,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-const particleCount = window.innerWidth < 600 ? 35 : 65;
+const particleCount = window.innerWidth < 600 ? 30 : 60;
 
 for (let i = 0; i < particleCount; i++) {
 
@@ -986,7 +1266,7 @@ for (let i = 0; i < particleCount; i++) {
         size: Math.random() * 2 + 0.5,
         speedX: (Math.random() - 0.5) * 0.4,
         speedY: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.5 + 0.15
+        opacity: Math.random() * 0.4 + 0.1
     });
 
 }
@@ -995,31 +1275,26 @@ function animateParticles() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    particles.forEach(particle => {
+    particles.forEach(p => {
 
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
+        p.x += p.speedX;
+        p.y += p.speedY;
 
-        if (particle.x < 0 || particle.x > canvas.width) {
-            particle.speedX *= -1;
-        }
-
-        if (particle.y < 0 || particle.y > canvas.height) {
-            particle.speedY *= -1;
-        }
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
 
         ctx.beginPath();
 
         ctx.arc(
-            particle.x,
-            particle.y,
-            particle.size,
+            p.x,
+            p.y,
+            p.size,
             0,
             Math.PI * 2
         );
 
         ctx.fillStyle =
-        `rgba(255,139,61,${particle.opacity})`;
+        `rgba(255,139,61,${p.opacity})`;
 
         ctx.fill();
 
